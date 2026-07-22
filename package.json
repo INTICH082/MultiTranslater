@@ -1,0 +1,17 @@
+{
+  "name": "multitranslate",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "pnpm@9.7.0",
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "backend:dev": "pnpm --filter @multitranslate/backend dev",
+    "extension:dev": "pnpm --filter @multitranslate/extension dev"
+  },
+  "devDependencies": {
+    "turbo": "^2.1.0",
+    "typescript": "^5.6.0"
+  }
+}

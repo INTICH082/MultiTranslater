@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.output/
+.wxt/
+.turbo/
+*.env
+!.env.example
+.DS_Store
