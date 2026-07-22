@@ -12,8 +12,8 @@ export async function translateText(params: {
   sourceLang?: string;
   targetLang: string;
 }): Promise<TranslateApiResponse> {
-  const { backendUrl } = await chrome.storage.sync.get("backendUrl");
-  const { glossary } = await chrome.storage.local.get("glossary");
+  const { backendUrl } = await browser.storage.sync.get("backendUrl");
+  const { glossary } = await browser.storage.local.get("glossary");
   const base = (backendUrl as string | undefined) ?? DEFAULT_BACKEND_URL;
 
   const res = await fetch(`${base}/api/translate`, {
@@ -44,8 +44,8 @@ export async function translateImageArea(params: {
   imageBase64: string;
   targetLang: string;
 }): Promise<OcrTranslateApiResponse> {
-  const { backendUrl } = await chrome.storage.sync.get("backendUrl");
-  const { glossary } = await chrome.storage.local.get("glossary");
+  const { backendUrl } = await browser.storage.sync.get("backendUrl");
+  const { glossary } = await browser.storage.local.get("glossary");
   const base = (backendUrl as string | undefined) ?? DEFAULT_BACKEND_URL;
 
   const res = await fetch(`${base}/api/ocr-translate`, {

@@ -7,7 +7,7 @@ const translateBodySchema = z.object({
   sourceLang: z.string().default("auto"),
   targetLang: z.string().min(2),
   providers: z.array(z.string()).optional(),
-  glossary: z.record(z.string()).optional(),
+  glossary: z.record(z.string(), z.string()).optional(),
 });
 
 export function registerTranslateRoutes(app: FastifyInstance, manager: TranslationManager) {

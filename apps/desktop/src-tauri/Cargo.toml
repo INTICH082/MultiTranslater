@@ -1,0 +1,24 @@
+[package]
+name = "multitranslate-desktop"
+version = "0.1.0"
+edition = "2021"
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-global-shortcut = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+reqwest = { version = "0.12", features = ["json"] }
+tokio = { version = "1", features = ["full"] }
+image = "0.25"
+xcap = "0.8"
+base64 = "0.22"
+urlencoding = "2"
+
+[lib]
+# Позволяет запускать тот же код и как бинарник, и (в перспективе) как lib для тестов
+name = "multitranslate_desktop_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]

@@ -1,14 +1,15 @@
 {
   "name": "multitranslate",
   "private": true,
-  "version": "0.3.0",
+  "version": "0.4.0",
   "packageManager": "pnpm@11.15.1",
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",
     "lint": "turbo run lint",
     "backend:dev": "pnpm --filter @multitranslate/backend dev",
-    "extension:dev": "pnpm --filter @multitranslate/extension dev"
+    "extension:dev": "pnpm --filter @multitranslate/extension dev",
+    "desktop:dev": "pnpm --filter @multitranslate/desktop tauri:dev"
   },
   "devDependencies": {
     "turbo": "^2.10.5",

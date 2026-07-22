@@ -1,6 +1,7 @@
 import { defineConfig } from "wxt";
 
 export default defineConfig({
+  modules: ["@wxt-dev/module-react"],
   manifest: {
     name: "MultiTranslate",
     description: "Агрегатор нескольких переводчиков с интеллектуальным анализом результатов",

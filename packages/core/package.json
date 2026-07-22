@@ -1,6 +1,6 @@
 {
   "name": "@multitranslate/core",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "private": true,
   "type": "module",
   "main": "src/index.ts",
@@ -10,10 +10,10 @@
     "lint": "tsc --noEmit"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.30.0",
-    "zod": "^3.23.8"
+    "@anthropic-ai/sdk": "^0.112.4",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
-    "typescript": "^5.6.0"
+    "typescript": "^7.0.2"
   }
 }

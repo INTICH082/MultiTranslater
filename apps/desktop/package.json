@@ -1,0 +1,28 @@
+{
+  "name": "@multitranslate/desktop",
+  "version": "0.4.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev:vite": "vite",
+    "build:vite": "vite build",
+    "tauri:dev": "tauri dev",
+    "tauri:build": "tauri build",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "react-router-dom": "^7.18.1",
+    "@tauri-apps/api": "^2.11.1",
+    "@tauri-apps/plugin-global-shortcut": "^2.3.2"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.11.4",
+    "@vitejs/plugin-react": "^4.7.0",
+    "vite": "^8.1.5",
+    "typescript": "^7.0.2",
+    "@types/react": "^19",
+    "@types/react-dom": "^19"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Права по умолчанию для всех окон MultiTranslate",
+  "windows": ["main", "selection", "result"],
+  "permissions": [
+    "core:default",
+    "core:window:allow-create",
+    "core:window:allow-close",
+    "core:window:allow-set-position",
+    "core:window:allow-set-size",
+    "core:window:allow-set-always-on-top",
+    "core:window:allow-set-decorations",
+    "core:window:allow-set-ignore-cursor-events",
+    "global-shortcut:allow-register",
+    "global-shortcut:allow-unregister"
+  ]
+}
