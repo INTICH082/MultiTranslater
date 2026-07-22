@@ -3,6 +3,8 @@ import {
   createGoogleProvider,
   createMicrosoftProvider,
   createYandexProvider,
+  createDeepLProvider,
+  createOpenAiProvider,
   type TranslationProvider,
 } from "@multitranslate/core";
 import { env } from "./env.js";
@@ -18,6 +20,12 @@ export function buildTranslationManager(): TranslationManager {
   }
   if (env.YANDEX_TRANSLATE_API_KEY && env.YANDEX_FOLDER_ID) {
     providers.push(createYandexProvider(env.YANDEX_TRANSLATE_API_KEY, env.YANDEX_FOLDER_ID));
+  }
+  if (env.DEEPL_API_KEY) {
+    providers.push(createDeepLProvider(env.DEEPL_API_KEY));
+  }
+  if (env.OPENAI_API_KEY) {
+    providers.push(createOpenAiProvider(env.OPENAI_API_KEY));
   }
 
   if (providers.length === 0) {

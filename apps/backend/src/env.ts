@@ -10,6 +10,8 @@ const envSchema = z.object({
   MICROSOFT_TRANSLATOR_REGION: z.string().optional(),
   YANDEX_TRANSLATE_API_KEY: z.string().optional(),
   YANDEX_FOLDER_ID: z.string().optional(),
+  DEEPL_API_KEY: z.string().optional(),
+  OPENAI_API_KEY: z.string().optional(),
   ALLOWED_ORIGINS: z.string().default("*"),
 });
 

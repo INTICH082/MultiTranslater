@@ -13,6 +13,7 @@ export async function translateText(params: {
   targetLang: string;
 }): Promise<TranslateApiResponse> {
   const { backendUrl } = await chrome.storage.sync.get("backendUrl");
+  const { glossary } = await chrome.storage.local.get("glossary");
   const base = (backendUrl as string | undefined) ?? DEFAULT_BACKEND_URL;
 
   const res = await fetch(`${base}/api/translate`, {
@@ -22,6 +23,7 @@ export async function translateText(params: {
       text: params.text,
       sourceLang: params.sourceLang ?? "auto",
       targetLang: params.targetLang,
+      glossary: glossary && Object.keys(glossary).length > 0 ? glossary : undefined,
     }),
   });
 
@@ -43,6 +45,7 @@ export async function translateImageArea(params: {
   targetLang: string;
 }): Promise<OcrTranslateApiResponse> {
   const { backendUrl } = await chrome.storage.sync.get("backendUrl");
+  const { glossary } = await chrome.storage.local.get("glossary");
   const base = (backendUrl as string | undefined) ?? DEFAULT_BACKEND_URL;
 
   const res = await fetch(`${base}/api/ocr-translate`, {
@@ -52,6 +55,7 @@ export async function translateImageArea(params: {
       imageBase64: params.imageBase64,
       sourceLang: "auto",
       targetLang: params.targetLang,
+      glossary: glossary && Object.keys(glossary).length > 0 ? glossary : undefined,
     }),
   });
 
