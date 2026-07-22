@@ -54,8 +54,23 @@ export default function App() {
         {saved ? "Сохранено ✓" : "Сохранить"}
       </button>
 
+      <button
+        onClick={async () => {
+          const [tab] = await browser.tabs.query({ active: true, currentWindow: true });
+          if (tab?.id) {
+            await browser.tabs.sendMessage(tab.id, { type: "MULTITRANSLATE_START_AREA_SELECT" });
+            window.close();
+          }
+        }}
+        style={{ width: "100%", padding: 8, marginTop: 8, cursor: "pointer" }}
+      >
+        Перевести область экрана
+      </button>
+
       <p style={{ fontSize: 11, color: "#666", marginTop: 12 }}>
-        Выделите текст на странице и выберите «Перевести через MultiTranslate» в контекстном меню.
+        Текст: выделите на странице → правый клик → «Перевести через MultiTranslate».
+        <br />
+        Область экрана: кнопка выше или Alt+Shift+T, затем выделите прямоугольник мышью (Esc — отмена).
       </p>
     </div>
   );

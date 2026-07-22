@@ -3,9 +3,11 @@ import cors from "@fastify/cors";
 import rateLimit from "@fastify/rate-limit";
 import { env } from "./env.js";
 import { buildTranslationManager } from "./translationManager.js";
+import { buildOcrProvider } from "./ocr.js";
 import { registerTranslateRoutes } from "./routes/translate.js";
+import { registerOcrTranslateRoutes } from "./routes/ocrTranslate.js";
 
-const app = Fastify({ logger: true });
+const app = Fastify({ logger: true, bodyLimit: 15 * 1024 * 1024 });
 
 await app.register(cors, {
   origin: env.ALLOWED_ORIGINS === "*" ? true : env.ALLOWED_ORIGINS.split(","),
@@ -18,7 +20,9 @@ await app.register(rateLimit, {
 });
 
 const manager = buildTranslationManager();
+const ocr = buildOcrProvider();
 registerTranslateRoutes(app, manager);
+registerOcrTranslateRoutes(app, manager, ocr);
 
 app.get("/health", async () => ({ status: "ok" }));
 
