@@ -3,7 +3,8 @@ import { z } from "zod";
 
 const envSchema = z.object({
   PORT: z.string().default("8787"),
-  ANTHROPIC_API_KEY: z.string().min(1, "ANTHROPIC_API_KEY обязателен для модуля анализа"),
+  ANTHROPIC_API_KEY: z.string().optional(),
+  GEMINI_API_KEY: z.string().optional(),
   GOOGLE_TRANSLATE_API_KEY: z.string().optional(),
   GOOGLE_VISION_API_KEY: z.string().optional(),
   MICROSOFT_TRANSLATOR_KEY: z.string().optional(),
@@ -12,6 +13,11 @@ const envSchema = z.object({
   YANDEX_FOLDER_ID: z.string().optional(),
   DEEPL_API_KEY: z.string().optional(),
   OPENAI_API_KEY: z.string().optional(),
+  GROQ_API_KEY: z.string().optional(),
+  LIBRETRANSLATE_URL: z.string().optional(),
+  LIBRETRANSLATE_API_KEY: z.string().optional(),
+  MYMEMORY_CONTACT_EMAIL: z.string().optional(),
+  MYMEMORY_ENABLED: z.string().optional(),
   ALLOWED_ORIGINS: z.string().default("*"),
 });
 

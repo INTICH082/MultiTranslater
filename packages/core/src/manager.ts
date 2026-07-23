@@ -1,12 +1,17 @@
 import type { TranslationProvider, TranslateRequest, MergedTranslation, TranslationResult } from "./types.js";
 import { mergeTranslations } from "./analysis/merge.js";
 
+export interface LlmKeys {
+  anthropicApiKey?: string;
+  geminiApiKey?: string;
+}
+
 export class TranslationManager {
   private providers: Map<string, TranslationProvider> = new Map();
 
   constructor(
     providers: TranslationProvider[],
-    private readonly anthropicApiKey: string
+    private readonly llmKeys: LlmKeys = {}
   ) {
     for (const p of providers) this.providers.set(p.id, p);
   }
@@ -32,7 +37,8 @@ export class TranslationManager {
     );
 
     return mergeTranslations({
-      anthropicApiKey: this.anthropicApiKey,
+      anthropicApiKey: this.llmKeys.anthropicApiKey,
+      geminiApiKey: this.llmKeys.geminiApiKey,
       originalText: req.text,
       sourceLang: req.sourceLang,
       targetLang: req.targetLang,
