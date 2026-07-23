@@ -4,6 +4,7 @@ export interface Settings {
   backendUrl: string;
   targetLang: string;
   glossary: Record<string, string>;
+  enabledProviders: string[];
 }
 
 export const getSettings = () => invoke<Settings>("get_settings");

@@ -10,9 +10,13 @@ const translateBodySchema = z.object({
   glossary: z.record(z.string(), z.string()).optional(),
 });
 
-export function registerTranslateRoutes(app: FastifyInstance, manager: TranslationManager) {
+export function registerTranslateRoutes(
+  app: FastifyInstance,
+  manager: TranslationManager,
+  llmStatus: { anthropic: boolean; gemini: boolean }
+) {
   app.get("/api/providers", async () => {
-    return { providers: manager.listProviders() };
+    return { providers: manager.listProviders(), llm: llmStatus };
   });
 
   app.post("/api/translate", async (request, reply) => {

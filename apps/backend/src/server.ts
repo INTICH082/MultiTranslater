@@ -21,7 +21,10 @@ await app.register(rateLimit, {
 
 const manager = buildTranslationManager();
 const ocr = buildOcrProvider();
-registerTranslateRoutes(app, manager);
+registerTranslateRoutes(app, manager, {
+  anthropic: Boolean(env.ANTHROPIC_API_KEY),
+  gemini: Boolean(env.GEMINI_API_KEY),
+});
 registerOcrTranslateRoutes(app, manager, ocr);
 
 app.get("/health", async () => ({ status: "ok" }));

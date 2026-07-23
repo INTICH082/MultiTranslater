@@ -12,6 +12,8 @@ pub struct Settings {
     #[serde(rename = "targetLang")]
     pub target_lang: String,
     pub glossary: HashMap<String, String>,
+    #[serde(rename = "enabledProviders", default)]
+    pub enabled_providers: Vec<String>,
 }
 
 impl Default for Settings {
@@ -20,6 +22,7 @@ impl Default for Settings {
             backend_url: "http://localhost:8787".to_string(),
             target_lang: "ru".to_string(),
             glossary: HashMap::new(),
+            enabled_providers: Vec::new(),
         }
     }
 }

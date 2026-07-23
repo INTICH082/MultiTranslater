@@ -80,10 +80,17 @@ async fn area_selected(
         Some(settings.glossary.clone())
     };
 
+    let providers = if settings.enabled_providers.is_empty() {
+        None
+    } else {
+        Some(settings.enabled_providers.clone())
+    };
+
     let result = backend_client::ocr_translate(
         &settings.backend_url,
         image_base64,
         settings.target_lang.clone(),
+        providers,
         glossary,
     )
     .await;

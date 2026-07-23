@@ -10,6 +10,8 @@ struct OcrTranslateRequest {
     #[serde(rename = "targetLang")]
     target_lang: String,
     #[serde(skip_serializing_if = "Option::is_none")]
+    providers: Option<Vec<String>>,
+    #[serde(skip_serializing_if = "Option::is_none")]
     glossary: Option<HashMap<String, String>>,
 }
 
@@ -34,6 +36,7 @@ pub async fn ocr_translate(
     backend_url: &str,
     image_base64: String,
     target_lang: String,
+    providers: Option<Vec<String>>,
     glossary: Option<HashMap<String, String>>,
 ) -> Result<OcrTranslateResponse, String> {
     let client = reqwest::Client::new();
@@ -44,6 +47,7 @@ pub async fn ocr_translate(
             image_base64,
             source_lang: "auto".to_string(),
             target_lang,
+            providers,
             glossary,
         })
         .send()

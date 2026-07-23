@@ -6,6 +6,7 @@ const ocrTranslateBodySchema = z.object({
   imageBase64: z.string().min(1),
   sourceLang: z.string().default("auto"),
   targetLang: z.string().min(2),
+  providers: z.array(z.string()).optional(),
   glossary: z.record(z.string(), z.string()).optional(),
 });
 
@@ -41,6 +42,7 @@ export function registerOcrTranslateRoutes(
         text: recognizedText,
         sourceLang: parsed.data.sourceLang,
         targetLang: parsed.data.targetLang,
+        providers: parsed.data.providers,
         glossary: parsed.data.glossary,
       });
 
